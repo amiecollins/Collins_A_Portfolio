@@ -1,0 +1,178 @@
+<header class="top-bar">
+    <h1 class="hidden">Welcome to my Portfolio -Signed, Amie Collins</h1>
+    <div class="tree-bar">
+        <img class="logo-mid" src="{{ icons.0.svgURL }}" alt="{{ icons.0.alt }}">
+        <nav class="header-nav">
+            <h2 class="hidden">Header Navigation (Desktop)</h2>
+            <ul>
+                <li><span data-link="home" class="link">Home</span><img src="{{ icons.2.svgURL }}" alt="{{ icons.2.alt }}"></li>
+                <li><span data-link="projects" class="link">Projects</span><img src="{{ icons.2.svgURL }}" alt="{{ icons.2.alt }}"></li>
+                <li><span data-link="about" class="link">About Me</span><img src="{{ icons.2.svgURL }}" alt="{{ icons.2.alt }}"></li>
+                <li><span data-link="contact" class="link">Contact</span></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="white-bar">
+        <img class="logo-bot" src="{{ icons.4.svgURL }}" alt="{{ icons.4.alt }}">
+        <img class="burger-icon" src="{{ icons.1.svgURL }}" alt="{{ icons.1.alt }}"></div>
+    <nav class="burger-menu hidden">
+        <h2 class="hidden">Burger Menu Navigation (Mobile)</h2>
+        <ul>
+            <li><span data-link="home" class="link">Home</span></li>
+            <li><span data-link="projects" class="link">Projects</span></li>
+            <li><span data-link="about" class="link">About Me</span></li>
+            <li><span data-link="contact" class="link">Contact</span></li>
+        </ul>
+    </nav> 
+</header>
+
+<div class="light-box hidden"><div class="exit-button">X</div></div>
+
+<div class="main-wrapper">
+    {{!-- Home --}}
+    <section class="home">
+        <h2 class="hidden">Home</h2>
+        <div class="main-hero saturate">
+            <div class="welcome-title-bg light-bg">
+                {{ section.0.title }}
+                {{ section.0.content }}
+                {{!-- Hello! My Name is <b>Amie Collins</b>,<br>
+                I am a <span class="HL">Web Developer</span> currently attending  <span class="HL">Fanshawe College</span> for <span class="HL"><a href="https://www.fanshawec.ca/programs/idp3-interactive-media-design">Interactive Media Design</a></span> --}}
+            </div>
+        </div>
+
+        <section class="qualities">
+            <h3 class="qualities-title">Qualities I aspire for in all my work:</h2>
+            <div class="photo-trio">
+                {{#each qualities}}
+                <div class="photo-container">
+                    <div class="quality-photo"><img src="{{ this.imgURL }}" alt="{{ this.alt }}" class="saturate blur"></div>
+                    <div class="photo-title light-bg">{{ this.title }}</div>
+                </div>
+                {{/each}}
+            </div>
+        </section>
+
+        <section class="intro">
+            <h3 class="hidden">Introduction to Me</h2>
+            <div class="intro-hero saturate">
+                <img class="me-photo saturate" src="{{ photos.0.imgURL }}" alt="{{ photos.0.alt }}">
+                <div class="intro-bg light-bg">
+                    <div class="intro-title">{{ section.1.title }}</div>
+                    <div class="intro-text">{{ section.1.content }}</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="quotes">
+            <h3 class="hidden">inspirational quote for you</h3>
+            <div class="quote"></div>
+        </section>
+
+    </section>
+
+{{!-- Projects --}}
+    <section class="projects">
+        <h2 class="hidden">Projects I've worked on</h2>
+        <div class="projects-hero saturate">
+            <div class="projects-title-bg light-bg">Projects</div>
+            <div class="projects-container">
+                {{#each projects}}
+                    <div class="project-icon" data-projectid="{{ this.id }}">{{ this.title }}</div>
+                {{/each}}
+            </div>
+        </div>
+        <div class="projects-display">
+            {{!-- generate with js --}}
+        </div>
+    </section>
+{{!-- About Me --}}
+    <section class="about">
+        <h2 class="hidden">More About Me</h2>
+        <div class="about-hero saturate">
+            <div class="about-text-bg light-bg">
+                {{ section.2.title }}
+                {{ section.2.content }}
+            </div>
+        </div>
+
+        <div class="social-feeds">
+            <div class="facebook-feed">
+
+            </div>
+            <div class="twitter-spotify">
+                <div class="twitter-feed">
+
+                </div>
+                <div class="spotify-playlist">
+
+                </div>
+            </div>
+            <div class="dnd-sheet">
+                <img class="saturate" src="{{ photos.1.imgURL }}" alt="{{ photos.1.alt }}">
+            </div>
+        </div>
+    </section>
+{{!-- Contact --}}
+    <section class="contact">
+        <h2 class="hidden">Contact Form</h2>
+        <div class="contact-hero saturate">
+            <form action="includes/form.php">
+                <div class="contact-title">
+                    {{ section.3.title }}
+                </div>
+                <div class="name">
+                    <label class="contact-lbl" for="name">Name:</label> <input class="contact-input light-bg" type="text" name="name"> 
+                </div>
+                <div class="email">
+                    <label class="contact-lbl" for="email">Email:</label> <input class="contact-input light-bg" type="email" name="email"> 
+                </div>
+                <div class="email-title">
+                    <label class="contact-lbl" for="title">Title:</label> <input class="contact-input light-bg" type="text" name="title"> 
+                </div>
+                <div class="email-content">
+                    <textarea class="contact-input light-bg" name="title"></textarea>
+                </div>
+                <div class="contact-buttons">
+                    <input type="submit" class="contact-button clear-button" value="Clear"><input type="submit" class="contact-button send-button" value="Send">
+                </div>
+            </form>
+            <div class="thank-you-message hidden">
+                {{ section.3.content }}
+            </div>
+        </div>
+    </section>
+
+    {{!-- Call-to-Action --}}
+    <section class="call">
+        <h2 class="hidden">Thank You</h2>
+        {{!-- generate with js --}}
+    </section>
+
+    {{!-- Footer --}}
+    <footer class="main-footer">
+        <h2 class="hidden">Footer Navigation and Social Media Links</h2>
+        <div class="footer-nav light-bg">
+            <nav class="footer-nav">
+                <h3 class="hidden">Footer Page Navigation</h3>
+                <ul>
+                    <li><span data-link="home" class="link">Home</span></li>
+                    <li><span data-link="projects" class="link">Projects</span></li>
+                    <li><span data-link="about" class="link">About Me</span></li>
+                    <li><span data-link="contact" class="link">Contact</span></li>
+            </ul>
+            </nav>
+        </div>
+
+        <div class="social-media-links">
+            <nav class="social-media">
+                <h2 class="hidden">Social Media Links</h2>
+                <ul>
+                    {{#each social_media}}
+                    <li><a href="{{ this.link }}"><img src="{{ this.imgURL }}" alt="{{ this.alt }}"></a></li>
+                    {{/each}}
+                </ul>
+            </nav>
+        </div>
+    </footer>
+</div>

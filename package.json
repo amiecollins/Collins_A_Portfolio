@@ -1,0 +1,45 @@
+{
+  "name": "amie_collins_portfolio",
+  "version": "1.0.0",
+  "description": "website displaying all the relavent work of amie collins",
+  "main": "js/app.js",
+  "dependencies": {
+    "autoprefixer": "^9.7.3",
+    "cssnano": "^4.1.10",
+    "express": "^4.17.1",
+    "gulp": "^4.0.2",
+    "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^4.0.2",
+    "handlebars": "^4.5.3",
+    "helpers-hbs": "^0.3.4",
+    "path": "^0.12.7",
+    "postcss": "^7.0.25",
+    "sass": "^1.24.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amiecollins/Collins_A_Portfolio.git"
+  },
+  "keywords": [
+    "Collins",
+    "Amie",
+    "Portfolio",
+    "Web",
+    "Designer",
+    "Developer",
+    "Front",
+    "End",
+    "Full",
+    "Stack"
+  ],
+  "author": "Amie Collins",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amiecollins/Collins_A_Portfolio/issues"
+  },
+  "homepage": "https://github.com/amiecollins/Collins_A_Portfolio#readme"
+}
