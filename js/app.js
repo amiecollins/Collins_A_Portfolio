@@ -149,6 +149,7 @@ const cta_bot = document.createElement("div");
 const rdmCTA = Math.round(Math.random() * Data.call_to_actionData.length());
 
 // set call to action data on new elements
+
 cta_top.textContent = Data.call_to_actionData.appriciation + "</br>" + Data.call_to_actionData.congrats + "<br> Have a " + Data.call_to_actionData.color_name + " star!";
 star.src = Data.iconsData[2].svgURL;
 star.alt = Data.call_to_actionData.color_name[rdmCTA] + Data.iconsData[2].alt;
@@ -202,6 +203,7 @@ function refreshProjects() {
     project_description.textContent = viewedProject.description;
     project_main.appendChild(project_desc);
     project_description.appendChild(project_link_container);
+
     project_link.textContent = "link to view";
     project_link.href = viewedProject.link;
     project_link_container.appendChild(project_link);

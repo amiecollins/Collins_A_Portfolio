@@ -1,0 +1,68 @@
+@import "_reset.scss";
+@import "_fonts.scss";
+@import "components/_header.scss";
+@import "components/_lightbox.scss";
+@import "components/_home.scss";
+@import "components/_intro.scss";
+@import "components/_projects.scss";
+@import "components/_about.scss";
+@import "components/_contact.scss";
+@import "components/_calltoaction.scss";
+@import "components/_footer.scss";
+
+.hidden {
+    display: none;
+}
+
+.light-bg {
+    background-color: rgba(255,255,255,0.65);
+}
+
+// animations
+
+.saturate {
+    filter: grayscale(100%);
+}
+
+.saturate:onhover {
+    transition: ease-in 2.5s;
+    filter: grayscale(0%);
+}
+
+.blur {
+    filter: blur(80%);
+}
+
+.blur:onhover {
+    transition: ease-in 2.5s;
+    filter: blur(0%);
+}
+
+a:onhover {
+    transition: ease-in 2.5s;
+    color: #666666;
+}
+
+main {
+    background-color: #000;
+    color:#000;
+}
+
+.main-wrapper {
+    background-color: #FFF;
+    width: 100%;
+    max-width: 850px;
+    font-family: $main-font;
+    padding-top: 65px;
+    margin: 0 auto;
+}
+
+// tablet
+@media screen and (min-width: 600px) {
+
+}
+
+// desktop
+@media screen and (min-width: 900px) {
+
+}

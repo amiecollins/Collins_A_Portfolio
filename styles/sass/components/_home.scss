@@ -1,0 +1,30 @@
+.main-hero {
+    width: 100%;
+    height: 410px;
+    background-position: center;
+}
+
+.welcome-title-bg {
+    margin-top: 150px;
+    margin: 0 auto;
+    height: 230px;
+    width: 100%;
+}
+
+
+
+// tablet
+@media screen and (min-width: 600px) {
+    welcome-title-bg {
+        width: 80%;
+    }
+
+}
+
+// desktop
+@media screen and (min-width: 900px) {
+    welcome-title-bg {
+        height: 150px;
+    }
+
+}

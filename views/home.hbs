@@ -26,7 +26,6 @@
 </header>
 
 <div class="light-box hidden"><img src="{{ icons.3.svgURL }}" alt="{{ icons.3.alt }}" class="exit-button"></div>
-
 <div class="main-wrapper">
     {{!-- Home --}}
     <section class="home">
@@ -35,6 +34,7 @@
             <div class="welcome-title-bg light-bg">
                 {{ section.0.title }}
                 {{ section.0.content }}
+
             </div>
         </div>
 
@@ -53,6 +53,7 @@
         <section class="intro">
             <h3 class="hidden">Introduction to Me</h2>
             <div class="intro-hero saturate" style="background-image: url({{ section.1.imgURL }});">
+
                 <img class="me-photo saturate" src="{{ photos.0.imgURL }}" alt="{{ photos.0.alt }}">
                 <div class="intro-bg light-bg">
                     <div class="intro-title">{{ section.1.title }}</div>
@@ -86,8 +87,8 @@
 {{!-- About Me --}}
     <section class="about">
         <h2 class="hidden">More About Me</h2>
-        <div class="about-hero saturate">
-            <div class="about-text-bg light-bg" style="background-image: url({{ section.2.imgURL }});">
+        <div class="about-hero saturate" style="background-image: url({{ section.2.imgURL }});">
+            <div class="about-text-bg light-bg">
                 {{ section.2.title }}
                 {{ section.2.content }}
 
@@ -185,7 +186,7 @@
                 <h2 class="hidden">Social Media Links</h2>
                 <ul>
                     {{#each social_media}}
-                    <li><a href="{{ this.link }}"><img src="{{ this.svgURL }}" alt="{{ this.alt }}"></a></li>
+                        <li><a href="{{ this.link }}"><img src="{{ this.svgURL }}" alt="{{ this.alt }}"></a></li>
                     {{/each}}
                 </ul>
             </nav>
