@@ -122,7 +122,7 @@ contact_hero.style.backgroundImage = url(Data.sectionsData[4].imgURL);
 
 var project_title = document.createElement("div").classList(".project-title");
 var project_main = document.createElement("div").classList(".project-main");
-var project_desc = document.createElement("div").classList(".project-desc");
+var project_description = document.createElement("div").classList(".project-desc");
 const project_link_container = document.createElement("div").classList(".project-link-container");
 var project_link = document.createElement("a");
 var slideshow = document.createElement("div").classList(".slideshow");
@@ -144,6 +144,9 @@ for (var i = 0; i < project_photos.length(); i++) {
 const cta_top = document.createElement("div");
 const star = document.createElement("img").classList(".bigstar");
 const cta_bot = document.createElement("div");
+
+var quote_content = document.createElement("div").classList(".quote-content");
+var quote_attribution = document.createElement("div").classList(".quote-attribution");
 
 // generate call to action content
 const rdmCTA = Math.round(Math.random() * Data.call_to_actionData.length());
@@ -173,6 +176,7 @@ refreshProjects(0);
 
 function refreshQuote() {
     const rdmQuote = Math.round(Math.random() * Data.quotesData.length());
+    quote_container.textContent = Data.quotesData.quote[rdmQuote];
     quote_container.textContent = Data.quotesData.quote[rdmQuote];
 }
 
@@ -212,6 +216,7 @@ function refreshProjects() {
     project_main.appendChild(project_photos.main_photo);
 
     project_display.appendChild(slideshow);
+    left_arrow.style.backgroundImage = url(Data.iconsData[8].svgURL);
     slideshow.appendChild(left_arrow);
     slideshow.appendChild(project_photos_viewer);
     project_photos_viewer.appendChild(project_photos_container);
@@ -234,6 +239,7 @@ function refreshProjects() {
         project_photos.five.alt = viewedProject.photo5ALT;
         project_photos_container.appendChild(project_photos.five);
     }
+    right_arrow.style.backgroundImage = url(Data.iconsData[9].svgURL);
     slideshow.appendChild(right_arrow);
 }
 
@@ -243,7 +249,9 @@ function generateLightBox() {
         light_box_photo = document.createElement("img").classList(".light-box-image");
         light_box_photo.src = photoURL;
         light_box_photo.alt = this.alt;
+        light_box.textContent = this.title;
         light_box.appendChild(light_box_photo);
+        light_box.textContent += this.alt;
         light_box.classList.remove(".hidden");
     }
 

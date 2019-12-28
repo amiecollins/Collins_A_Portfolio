@@ -43,8 +43,8 @@
             <div class="photo-trio">
                 {{#each qualities}}
                 <div class="photo-container">
-                    <div class="quality-photo"><img src="{{ this.imgURL }}" alt="{{ this.alt }}" class="saturate"></div>
-                    <div class="photo-title light-bg">{{ this.title }}</div>
+                    <div class="quality-photo saturate blur" style="background-image: url({{ this.imgURL }});"><div class"quality-desc light-bg"><span>{{ this.description }}</span></div></div>
+                    <div class="photo-title">{{ this.title }}</div>
                 </div>
                 {{/each}}
             </div>
@@ -91,27 +91,28 @@
             <div class="about-text-bg light-bg">
                 {{ section.2.title }}
                 {{ section.2.content }}
+                <div class="about-navigation">
+                    <div class="document-links light-bg">
+                        <nav class="documents">
+                            <h2 class="hidden">Links to Important Documents</h2>
+                            <ul>
+                                {{#each documents}}
+                                    <li><a href="{{ this.link }}"><img src="{{ this.svgURL }}" alt="{{ this.alt }}" class="link-icon"></a></li>
+                                {{/each}}
+                            </ul>
+                        </nav>
+                    </div>
 
-                <div class="document-links">
-                    <nav class="documents">
-                        <h2 class="hidden">Links to Important Documents</h2>
-                        <ul>
-                            {{#each documents}}
-                            <li><a href="{{ this.link }}"><img src="{{ this.svgURL }}" alt="{{ this.alt }}"></a></li>
-                            {{/each}}
-                        </ul>
-                     </nav>
-                </div>
-
-                 <div class="social-media-links">
-                    <nav class="social-media">
-                        <h2 class="hidden">Social Media Links</h2>
-                        <ul>
-                            {{#each social_media}}
-                            <li><a href="{{ this.link }}"><img src="{{ this.svgURL }}" alt="{{ this.alt }}"></a></li>
-                            {{/each}}
-                        </ul>
-                     </nav>
+                    <div class="social-media-links light-bg">
+                        <nav class="social-media">
+                            <h2 class="hidden">Social Media Links</h2>
+                            <ul>
+                                {{#each social_media}}
+                                    <li><a href="{{ this.link }}"><img src="{{ this.svgURL }}" alt="{{ this.alt }}" class="link-icon"></a></li>
+                                {{/each}}
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
             </div>
         </div>
@@ -120,7 +121,7 @@
             <div class="spotify-playlist">
                 <iframe src="https://open.spotify.com/embed/playlist/5vRyv8yV7FGorvz0NMAHTh" width="100%" height="100%" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
             </div>
-            <div class="twitter-feed">
+            <div class="horizontal-feeds">
                 <div class="twitter-feed">
                     <a class="twitter-timeline" data-height="450" href="https://twitter.com/AmieCollinsLdn?ref_src=twsrc%5Etfw">Tweets by AmieCollinsLdn</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                 </div>
@@ -134,23 +135,23 @@
     <section class="contact">
         <h2 class="hidden">Contact Form</h2>
         <div class="contact-hero saturate" style="background-image: url({{ section.3.imgURL }});">
-            <form action="includes/form.php">
+            <form action="includes/form.php" class="contact-form">
                 <div class="contact-title">
                     {{ section.3.title }}
                 </div>
-                <div class="name">
+                <div class="name contact-row">
                     <label class="contact-lbl" for="name">Name:</label> <input class="contact-input light-bg" type="text" name="name"> 
                 </div>
-                <div class="email">
+                <div class="email contact-row">
                     <label class="contact-lbl" for="email">Email:</label> <input class="contact-input light-bg" type="email" name="email"> 
                 </div>
-                <div class="email-title">
+                <div class="email-title contact-row">
                     <label class="contact-lbl" for="title">Title:</label> <input class="contact-input light-bg" type="text" name="title"> 
                 </div>
-                <div class="email-content">
+                <div class="email-content contact-row">
                     <textarea class="contact-input light-bg" name="title"></textarea>
                 </div>
-                <div class="contact-buttons">
+                <div class="contact-buttons contact-row">
                     <input type="submit" class="contact-button clear-button" value="Clear"><input type="submit" class="contact-button send-button" value="Send">
                 </div>
             </form>
@@ -170,23 +171,23 @@
     <footer class="main-footer">
         <h2 class="hidden">Footer Navigation and Social Media Links</h2>
         <div class="footer-nav light-bg" style="background-image: url({{ section.4.imgURL }});">
-            <nav class="footer-nav">
+            <nav>
                 <h3 class="hidden">Footer Page Navigation</h3>
                 <ul>
-                    <li><span data-link="home" class="link">Home</span></li>
-                    <li><span data-link="projects" class="link">Projects</span></li>
-                    <li><span data-link="about" class="link">About Me</span></li>
-                    <li><span data-link="contact" class="link">Contact</span></li>
+                    <li><span data-link="home" class="link link-icon">Home</span></li>
+                    <li><span data-link="projects" class="link link-icon">Projects</span></li>
+                    <li><span data-link="about" class="link link-icon">About Me</span></li>
+                    <li><span data-link="contact" class="link link-icon">Contact</span></li>
             </ul>
             </nav>
         </div>
 
-        <div class="social-media-links">
+        <div class="social-media-links-footer light-bg">
             <nav class="social-media">
                 <h2 class="hidden">Social Media Links</h2>
                 <ul>
                     {{#each social_media}}
-                        <li><a href="{{ this.link }}"><img src="{{ this.svgURL }}" alt="{{ this.alt }}"></a></li>
+                        <li><a href="{{ this.link }}"><img src="{{ this.svgURL }}" alt="{{ this.alt }}" class="link-icon"></a></li>
                     {{/each}}
                 </ul>
             </nav>
