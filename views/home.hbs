@@ -35,8 +35,6 @@
             <div class="welcome-title-bg light-bg">
                 {{ section.0.title }}
                 {{ section.0.content }}
-                {{!-- Hello! My Name is <b>Amie Collins</b>,<br>
-                I am a <span class="HL">Web Developer</span> currently attending  <span class="HL">Fanshawe College</span> for <span class="HL"><a href="https://www.fanshawec.ca/programs/idp3-interactive-media-design">Interactive Media Design</a></span> --}}
             </div>
         </div>
 
@@ -92,6 +90,28 @@
             <div class="about-text-bg light-bg">
                 {{ section.2.title }}
                 {{ section.2.content }}
+
+                <div class="document-links">
+                    <nav class="documents">
+                        <h2 class="hidden">Links to Important Documents</h2>
+                        <ul>
+                            {{#each documents}}
+                            <li><a href="{{ this.link }}"><img src="{{ this.svgURL }}" alt="{{ this.alt }}"></a></li>
+                            {{/each}}
+                        </ul>
+                     </nav>
+                </div>
+
+                 <div class="social-media-links">
+                    <nav class="social-media">
+                        <h2 class="hidden">Social Media Links</h2>
+                        <ul>
+                            {{#each social_media}}
+                            <li><a href="{{ this.link }}"><img src="{{ this.svgURL }}" alt="{{ this.alt }}"></a></li>
+                            {{/each}}
+                        </ul>
+                     </nav>
+                </div>
             </div>
         </div>
 
@@ -106,9 +126,6 @@
                 <div class="spotify-playlist">
 
                 </div>
-            </div>
-            <div class="dnd-sheet">
-                <img class="saturate" src="{{ photos.1.imgURL }}" alt="{{ photos.1.alt }}">
             </div>
         </div>
     </section>
@@ -168,7 +185,7 @@
                 <h2 class="hidden">Social Media Links</h2>
                 <ul>
                     {{#each social_media}}
-                    <li><a href="{{ this.link }}"><img src="{{ this.imgURL }}" alt="{{ this.alt }}"></a></li>
+                    <li><a href="{{ this.link }}"><img src="{{ this.svgURL }}" alt="{{ this.alt }}"></a></li>
                     {{/each}}
                 </ul>
             </nav>
