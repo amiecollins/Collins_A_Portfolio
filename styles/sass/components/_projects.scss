@@ -23,23 +23,27 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    overflow: hidden;
 }
 
 .project-icon {
-    size: 19px;
-    line-height: 22px;
-    min-height: 300px;
-    flex: 1 1 300px;
-    font-family: $header-font;
+    size: 25px;
+    line-height: 30px;
+    min-height: 150px;
+    flex: 1 1 150px;
+    font-family: $main-font;
+    background-color: rgba(102,102,102, 1);
 }
 
 .project-icon:hover {
-    flex: 2 2 600px;
+    flex: 2 2 300px;
+    min-height: 300px;
     transition: ease-in 0.5s;
-    size: 28px;
-    line-height: 44px;
+    font-size: 40px;
+    line-height: 48px;
     letter-spacing: 150%;
     box-shadow: 5px 10px #000;
+    background-color: rgba(52,52,52, 0.8);
 }
 
 .projects-display {
@@ -72,6 +76,12 @@
     border: 5px solid black;
     border: 2px solid white;
     width: 100%;
+}
+
+.project-main-photo {
+    width: 100%;
+    padding: 15px;
+    height: auto;
 }
 
 .project_main {
@@ -163,4 +173,12 @@
        rotate: 0; 
     }
     
+}
+
+// desktop
+@media screen and (min-width: 900px) {
+    .project-icon {
+        font-size: 40px;
+        line-height: 48px;
+    }
 }

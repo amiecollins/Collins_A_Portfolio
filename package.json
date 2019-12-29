@@ -1,6 +1,6 @@
 {
-  "name": "amie_collins_portfolio",
-  "version": "1.0.0",
+  "name": "amie_collins_design_and_development",
+  "version": "1.1.0",
   "description": "website displaying all the relavent work of amie collins",
   "main": "js/app.js",
   "dependencies": {
@@ -11,7 +11,9 @@
     "gulp-postcss": "^8.0.0",
     "gulp-sass": "^4.0.2",
     "handlebars": "^4.5.3",
+    "handlebars-helper-each": "^0.1.2",
     "helpers-hbs": "^0.3.4",
+    "mysql": "^2.17.1",
     "path": "^0.12.7",
     "postcss": "^7.0.25",
     "sass": "^1.24.0"

@@ -57,9 +57,16 @@ main {
     margin: 0 auto;
 }
 
+.main-text {
+    font-family: $main-font;
+    size: 25px;
+}
+
 // tablet
 @media screen and (min-width: 600px) {
-
+    .main-text {
+        size: 40px;
+    }
 }
 
 // desktop

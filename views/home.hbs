@@ -32,9 +32,8 @@
         <h2 class="hidden">Home</h2>
         <div class="main-hero saturate" style="background-image: url({{ section.0.imgURL }});">
             <div class="welcome-title-bg light-bg">
-                {{ section.0.title }}
-                {{ section.0.content }}
-
+                {{ section.0.title }} <img class="hero-logo" src="{{ icons.0.svgURL }}" alt="{{ icons.0.alt }}">
+                <span class="main-text">{{ section.0.content }}</span>
             </div>
         </div>
 
@@ -72,8 +71,8 @@
 {{!-- Projects --}}
     <section class="projects">
         <h2 class="hidden">Projects I've worked on</h2>
-        <div class="projects-hero saturate">
-            <div class="projects-title-bg light-bg">Projects</div>
+        <div class="projects-hero saturate" style="background-image: url({{ section.2.imgURL }});">
+            <div class="projects-title-bg light-bg">{{ section.2.title }}</div>
             <div class="projects-container">
                 {{#each projects}}
                     <div class="project-icon" data-projectid="{{ this.id }}">{{ this.title }}</div>
@@ -87,10 +86,10 @@
 {{!-- About Me --}}
     <section class="about">
         <h2 class="hidden">More About Me</h2>
-        <div class="about-hero saturate" style="background-image: url({{ section.2.imgURL }});">
+        <div class="about-hero saturate" style="background-image: url({{ section.3.imgURL }});">
             <div class="about-text-bg light-bg">
-                {{ section.2.title }}
-                {{ section.2.content }}
+                {{ section.3.title }}
+                {{ section.3.content }}
                 <div class="about-navigation">
                     <div class="document-links light-bg">
                         <nav class="documents">
@@ -134,10 +133,10 @@
 {{!-- Contact --}}
     <section class="contact">
         <h2 class="hidden">Contact Form</h2>
-        <div class="contact-hero saturate" style="background-image: url({{ section.3.imgURL }});">
+        <div class="contact-hero saturate" style="background-image: url({{ section.4.imgURL }});">
             <form action="includes/form.php" class="contact-form">
                 <div class="contact-title">
-                    {{ section.3.title }}
+                    {{ section.4.title }}
                 </div>
                 <div class="name contact-row">
                     <label class="contact-lbl" for="name">Name:</label> <input class="contact-input light-bg" type="text" name="name"> 
@@ -156,7 +155,7 @@
                 </div>
             </form>
             <div class="thank-you-message hidden">
-                {{ section.3.content }}
+                {{ section.4.content }}
             </div>
         </div>
     </section>
@@ -170,7 +169,7 @@
     {{!-- Footer --}}
     <footer class="main-footer">
         <h2 class="hidden">Footer Navigation and Social Media Links</h2>
-        <div class="footer-nav light-bg" style="background-image: url({{ section.4.imgURL }});">
+        <div class="footer-nav light-bg" style="background-image: url({{ section.5.imgURL }});">
             <nav>
                 <h3 class="hidden">Footer Page Navigation</h3>
                 <ul>
@@ -191,6 +190,7 @@
                     {{/each}}
                 </ul>
             </nav>
+            <div class="copyright">{{ section.5.content }}</div>
         </div>
     </footer>
 </div>
