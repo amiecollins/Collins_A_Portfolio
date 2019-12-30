@@ -2,35 +2,6 @@ const sql = require("../utils/sql.js");
 
 (() => {
     
-    var quotesData;
-    var projectsData;
-    var call_to_actionData;
-
-    sql.getConnection((err, connection) => {
-        if (err) {
-            console.log(err.message);
-            return next();
-        }
-        // collect data
-        query = "SELECT * FROM tbl_projects_data LEFT JOIN tbl_project_photos ON tbl_projects_data.photosetID = tbl_project_photos.ID";
-        sql.query(query, (err, projects) => {
-            if (err) { console.log(err.message); return next(); }
-            projectsData = projects;
-        })
-        
-        query = "SELECT * FROM tbl_calltoaction";
-        sql.query(query, (err, quotes) => {
-            if (err) { console.log(err.message); return next(); }
-            call_to_actionData = quotes;
-        })
-        
-        query = "SELECT * FROM tbl_quotes";
-        sql.query(query, (err, icons) => {
-            if (err) { console.log(err.message); return next(); }
-            iconsData = icons;
-        })
-    })
-
     
     // select page locations (just for scrolling)
 

@@ -22,19 +22,19 @@
 
 .saturate {
     filter: grayscale(100%);
+    transition: ease-in 2s;
 }
 
-.saturate:onhover {
-    transition: ease-in 2.5s;
+.saturate:hover {
     filter: grayscale(0%);
 }
 
 .blur {
-    filter: blur(80%);
+    filter: blur(100%);
+    transition: ease-in 2s;
 }
 
-.blur:onhover {
-    transition: ease-in 2.5s;
+.blur:hover {
     filter: blur(0%);
 }
 

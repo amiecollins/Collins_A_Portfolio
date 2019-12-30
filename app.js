@@ -13,6 +13,9 @@ const port = process.env.PORT || 3000;
 const app = express();
 
 
+var quotesData;
+var projectsData;
+var call_to_actionData;
 var iconsData;
 var photosData;
 var sectionsData;
@@ -51,6 +54,24 @@ app.get("/", (req, res, next) => {
             social_mediaData = media;
         })
 
+        query = "SELECT * FROM tbl_projects_data LEFT JOIN tbl_project_photos ON tbl_projects_data.photosetID = tbl_project_photos.ID";
+        sql.query(query, (err, projects) => {
+            if (err) { console.log(err.message); return next(); }
+            projectsData = projects;
+        })
+        
+        query = "SELECT * FROM tbl_calltoaction";
+        sql.query(query, (err, quotes) => {
+            if (err) { console.log(err.message); return next(); }
+            call_to_actionData = quotes;
+        })
+        
+        query = "SELECT * FROM tbl_quotes";
+        sql.query(query, (err, icons) => {
+            if (err) { console.log(err.message); return next(); }
+            iconsData = icons;
+        })
+
         query = "SELECT * FROM tbl_icons";
         sql.query(query, (err, icons) => {
             if (err) { console.log(err.message); return next(); }
@@ -73,6 +94,19 @@ app.get("/", (req, res, next) => {
 
     res.render("index", { icons: iconsData, photos: photosData, projects: projectsData, section: sectionsData, qualities: qualitiesData, social_media: social_mediaData });
     
+    var Data = {
+        quotes: quotesData,
+        projects: projectsData,
+        call_to_action: call_to_actionData
+    };
+    var dataTransfer = new XMLHttpRequest();
+    dataTransfer.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+        Data = JSON.parse(this.responseText);
+        }
+    };
+    //dataTransfer.open("GET", "", true);
+    //dataTransfer.send();
 })
 
 app.listen(port, () => {
