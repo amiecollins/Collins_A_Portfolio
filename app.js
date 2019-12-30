@@ -1,12 +1,17 @@
 // Handlebars and Data Collection
 
 // requirements
+const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const express = require("express");
 const hbs = require('handlebars/runtime')['default'];
 const helpers = require('helpers-hbs');
 hbs.registerHelper("each", require("handlebars-helper-each"));
 const path = require("path");
+const ajax = require("ajax");
 const sql = require("./utils/sql");
+const fetch = require("node-fetch");
+const bodyParser = require("body-parser");
+const json = require("json");
 
 
 const port = process.env.PORT || 3000;
@@ -23,11 +28,13 @@ var qualitiesData;
 var social_mediaData;
 var projectsData;
 
+// app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(require("body-parser").json());
 app.use(express.static(__dirname));
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname + "/views/"));
 
-app.get("/", (req, res, next) => {
+app.get("/index", (req, res, next) => {
     // connect to database
     sql.getConnection((err, connection) => {
         if (err) {
@@ -61,15 +68,15 @@ app.get("/", (req, res, next) => {
         })
         
         query = "SELECT * FROM tbl_calltoaction";
-        sql.query(query, (err, quotes) => {
+        sql.query(query, (err, calltoaction) => {
             if (err) { console.log(err.message); return next(); }
-            call_to_actionData = quotes;
+            call_to_actionData = calltoaction;
         })
         
         query = "SELECT * FROM tbl_quotes";
-        sql.query(query, (err, icons) => {
+        sql.query(query, (err, quotes) => {
             if (err) { console.log(err.message); return next(); }
-            iconsData = icons;
+            quotesData = quotes;
         })
 
         query = "SELECT * FROM tbl_icons";
@@ -83,30 +90,35 @@ app.get("/", (req, res, next) => {
             if (err) { console.log(err.message); return next(); }
             photosData = photos;
         })
-        
-        query = "SELECT * FROM tbl_projects_data LEFT JOIN tbl_project_photos ON tbl_projects_data.photosetID = tbl_project_photos.ID";
-        sql.query(query, (err, projects) => {
-            if (err) { console.log(err.message); return next(); }
-            projectsData = projects;
-        })
-
     })
 
-    res.render("index", { icons: iconsData, photos: photosData, projects: projectsData, section: sectionsData, qualities: qualitiesData, social_media: social_mediaData });
     
     var Data = {
         quotes: quotesData,
         projects: projectsData,
         call_to_action: call_to_actionData
     };
-    var dataTransfer = new XMLHttpRequest();
-    dataTransfer.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-        Data = JSON.parse(this.responseText);
-        }
-    };
-    //dataTransfer.open("GET", "", true);
-    //dataTransfer.send();
+
+    DynamicData = JSON.stringify(Data));
+
+    
+    async function sendData() {
+        console.log("sendData initiated" + DynamicData);
+        console.log("fetch started");
+        var response = await fetch("http://localhost:3000/includes/dynamic-content.json", {  
+            method: 'POST', 
+            headers: {'Content-Type': 'application/json'}, body: DynamicData 
+        }).then(function(data) { console.log(data); return data; }).then(function(response) { return response.json(); }).then(function(datacontent) { if (datacontent == null) { console.log("data fail"); } else { console.log(datacontent); } }).catch(err => console.error(err));
+        console.log("fetch complete");
+        return response;
+    }
+    
+    var Request = sendData();
+    console.log("Request complete" + Request);
+
+    res.render("index", { icons: iconsData, photos: photosData, projects: projectsData, section: sectionsData, qualities: qualitiesData, social_media: social_mediaData });
+
+
 })
 
 app.listen(port, () => {

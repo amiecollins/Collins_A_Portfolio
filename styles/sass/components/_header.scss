@@ -5,6 +5,7 @@
     width: 100%;
     top: 0px;
     left: 0px;
+    z-index: 5;
 }
 
 .tree-bar {
@@ -14,10 +15,13 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
+    background-size: cover;
 }
 
 .logo-mid {
     margin-top: 40px;
+    max-height: 20px;
+    max-width: 105px;
 }
 
 .burger-icon {

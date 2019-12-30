@@ -18,9 +18,10 @@
 .light-box-photo {
     width: 100%;
     height: auto;
+    background-size: cover;
 }
 
 .exit-button:hover {
     fill: #666;
-    transition: ease-in 1s;
+    transition: ease-in 0.5s;
 }

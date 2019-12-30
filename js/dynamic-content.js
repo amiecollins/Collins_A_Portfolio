@@ -1,9 +1,20 @@
-const sql = require("../utils/sql.js");
+(async () => {
 
-(() => {
-    
-    
-    // select page locations (just for scrolling)
+    // receive json data
+    var FullData;
+    console.log("data collection started");
+    FullData = await fetch("http://localhost:3000/includes/dynamic-content.json", { method: 'POST', headers: {'Content-Type': 'application/json'} }).then(async function (data) { return FullData = await data.json }).catch(err => console.error(err));
+    if (FullData == undefined) {
+        console.log("data not recieved");
+    } else {
+        console.log(FullData);
+    }
+
+    var Data = FullData.body;
+    console.log(Data);
+    var quotesData = Data.quotes;
+    var projectsData = Data.projects;
+    var call_to_actionData = Data.call_to_action;
 
     const home = document.querySelector(".home");
     const projects = document.querySelector(".projects");
@@ -31,7 +42,7 @@ const sql = require("../utils/sql.js");
     // select elements to apply background images
 
     const tree_bar = document.querySelector(".tree-bar");
-    tree_bar.style.backgroundImage = url(iconsData[4].svgURL);
+    tree_bar.style.backgroundImage = url("/images/SVG/" + iconsData[4].svgURL);
 
     const home_hero = document.querySelector(".main-hero");
     const intro_hero = document.querySelector(".intro-hero");
@@ -39,11 +50,11 @@ const sql = require("../utils/sql.js");
     const about_hero = document.querySelector(".about-hero");
     const contact_hero = document.querySelector(".contact-hero");
 
-    home_hero.style.backgroundImage = url(sectionsData[0].imgURL);
-    intro_hero.style.backgroundImage = url(sectionsData[1].imgURL);
-    projects_hero.style.backgroundImage = url(sectionsData[2].imgURL);
-    about_hero.style.backgroundImage = url(sectionsData[3].imgURL);
-    contact_hero.style.backgroundImage = url(sectionsData[4].imgURL);
+    home_hero.style.backgroundImage = url("/images/" + sectionsData[0].imgURL);
+    intro_hero.style.backgroundImage = url("/images/" + sectionsData[1].imgURL);
+    projects_hero.style.backgroundImage = url("/images/" + sectionsData[2].imgURL);
+    about_hero.style.backgroundImage = url("/images/" + sectionsData[3].imgURL);
+    contact_hero.style.backgroundImage = url("/images/" + sectionsData[4].imgURL);
 
 
     // create new elements to be added
@@ -74,6 +85,28 @@ const sql = require("../utils/sql.js");
     var quote_content = document.createElement("div").classList(".quote-content");
     var quote_attribution = document.createElement("div").classList(".quote-attribution");
 
+    // generate call to action content
+    const rdmCTA = Math.round(Math.random() * call_to_actionData.length());
+
+    // set call to action data on new elements
+    cta_top.textContent = call_to_actionData.appriciation + "</br>" + call_to_actionData.congrats + "<br> Have a " + call_to_actionData.color_name + " star!";
+    star.src = iconsData[2].svgURL;
+    star.alt = call_to_actionData.color_name[rdmCTA] + iconsData[2].alt;
+    star.fill(call_to_actionData[rdmCTA].color_hex);
+    star.classList.add(".saturate");
+    cta_bot.textContent = call_to_actionData[rdmCTA].call_to_action;
+
+    // publish random content
+    refreshQuote();
+    setInterval(refreshQuote, 30000); // quote will refresh every 30 secs
+    call_to_action_container.appendChild(cta_top);
+    call_to_action_container.appendChild(star);
+    call_to_action_container.appendChild(cta_bottom);
+
+    // publish projects
+
+    refreshProjects(0);
+
     // functions
 
     function refreshQuote() {
@@ -90,13 +123,13 @@ const sql = require("../utils/sql.js");
     }
 
     function scrollLink() {
-        if (this.dataset.link == ".home") {
+        if (this.dataset.link == "home") {
             home.scrollIntoView();
-        } else if (this.dataset.link == ".projects") {
+        } else if (this.dataset.link == "projects") {
             projects.scrollIntoView();
-        } else if (this.dataset.link == ".about") {
+        } else if (this.dataset.link == "about") {
             about.scrollIntoView();
-        } else if (this.dataset.link == ".contact") {
+        } else if (this.dataset.link == "contact") {
             contact.scrollIntoView();
         }
     }
@@ -197,30 +230,6 @@ const sql = require("../utils/sql.js");
             contact_form[i].value = "";
         }
     }    
-
-    // generate call to action content
-    const rdmCTA = Math.round(Math.random() * call_to_actionData.length());
-
-    // set call to action data on new elements
-
-    cta_top.textContent = call_to_actionData.appriciation + "</br>" + call_to_actionData.congrats + "<br> Have a " + call_to_actionData.color_name + " star!";
-    star.src = iconsData[2].svgURL;
-    star.alt = call_to_actionData.color_name[rdmCTA] + iconsData[2].alt;
-    star.fill(call_to_actionData[rdmCTA].color_hex);
-    star.classList.add(".saturate");
-    cta_bot.textContent = call_to_actionData[rdmCTA].call_to_action;
-
-    // publish random content
-
-    refreshQuote();
-    setInterval(refreshQuote, 10000);
-    call_to_action_container.appendChild(cta_top);
-    call_to_action_container.appendChild(star);
-    call_to_action_container.appendChild(cta_bottom);
-
-    // publish projects
-
-    refreshProjects(0);
 
     // add event listeners
 
