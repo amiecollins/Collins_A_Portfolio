@@ -1,120 +1,37 @@
-// Handlebars and Data Collection
+const sql = require("../utils/sql.js");
 
-// requirements
-const express = require("express");
-const hbs = require('handlebars/runtime')['default'];
-const helpers = require('helpers-hbs');
-hbs.registerHelper('each', require('handlebars-helper-each'));
-const path = require("path");
-const sql = require("./utils/sql");
+(() => {
+    
+    var quotesData;
+    var projectsData;
+    var call_to_actionData;
 
-
-const port = process.env.PORT || 3000;
-const app = express();
-
-var Data = [
-    iconsData,
-    photosData,
-    sectionsData,
-    qualitiesData,
-    quotesData,
-    projectsData,
-    call_to_actionData,
-    social_mediaData
-];
-
-var DataTableNames = [
-    "tbl_icons",
-    "tbl_photos",
-    "tbl_sections",
-    "tbl_qualities",
-    "tbl_quotes",
-    "tbl_projects_data",
-    "tbl_call_to_action",
-    "tbl_social_media"
-];
-
-app.use(express.static(__dirname));
-app.set("view engine", "hbs");
-app.set("views", path.join(__dirname + "/views"));
-
-app.get("/", (req, res, next) => {
-    // connect to database
     sql.getConnection((err, connection) => {
         if (err) {
             console.log(err.message);
             return next();
         }
-
-        // collect data from relational tables
-        var query = "SELECT * FROM tbl_photos, tbl_sections INNER JOIN tbl_photos ON tbl_sections.heroID";
-        sql.query(query, (err, data) => {
+        // collect data
+        query = "SELECT * FROM tbl_projects_data LEFT JOIN tbl_project_photos ON tbl_projects_data.photosetID = tbl_project_photos.ID";
+        sql.query(query, (err, projects) => {
             if (err) { console.log(err.message); return next(); }
-            Data.sectionsData = data;
-        })
-
-        query = "SELECT * FROM tbl_photos, tbl_qualities INNER JOIN tbl_photos ON tbl_qualities.imgID";
-        sql.query(query, (err, data) => {
-            if (err) { console.log(err.message); return next(); }
-            Data.qualitiesData = data;
-        })
-
-        query = "SELECT * FROM tbl_icons, tbl_social_media INNER JOIN tbl_icons ON tbl_social_media.iconID";
-        sql.query(query, (err, data) => {
-            if (err) { console.log(err.message); return next(); }
-            Data.social_mediaData = data;
+            projectsData = projects;
         })
         
-        query = "SELECT * FROM tbl_projects_data, tbl_project_photos INNER JOIN tbl_projects_photos ON tbl_projects_data.photosetID";
-        sql.query(query, (err, data) => {
-            if (err) { console.log(err.message); return next(); }
-            Data.project_photos = data;
-        })
-
-        query = "SELECT * FROM tbl_icons";
-        sql.query(query, (err, data) => {
-            if (err) { console.log(err.message); return next(); }
-            Data.iconsData = data;
-        })
-
-        query = "SELECT * FROM tbl_photos";
-        sql.query(query, (err, data) => {
-            if (err) { console.log(err.message); return next(); }
-            Data.photosData = data;
-        })
-
-        query = "SELECT * FROM tbl_quotes";
-        sql.query(query, (err, data) => {
-            if (err) { console.log(err.message); return next(); }
-            Data.iconsData = data;
-        })
-
         query = "SELECT * FROM tbl_calltoaction";
-        sql.query(query, (err, data) => {
+        sql.query(query, (err, quotes) => {
             if (err) { console.log(err.message); return next(); }
-            Data.call_to_actionData = data;
+            call_to_actionData = quotes;
+        })
+        
+        query = "SELECT * FROM tbl_quotes";
+        sql.query(query, (err, icons) => {
+            if (err) { console.log(err.message); return next(); }
+            iconsData = icons;
         })
     })
-    // check that all data is there
+
     
-    for (var i = 0; i < Data.length(); i++) {
-        if (Data[i] == null) {
-            nullCheck = true;
-        }
-    }
-    for (var i = 0; i < Collections.length(); i++) {
-        if (Collections[i] == null) {
-            nullCheck = true;
-        }
-    }
-        console.log(Data);
-
-        if (nullCheck == false) {
-            res.render("home", { icons: Collections.iconsData, photos: Collections.photosData, section: Data.sectionsData, qualities: Data.qualitiesData, social_media: Data.social_mediaData});
-        } else {
-            console.log("Data Error");
-    }
-
     // select page locations (just for scrolling)
 
     const home = document.querySelector(".home");
@@ -143,7 +60,7 @@ app.get("/", (req, res, next) => {
     // select elements to apply background images
 
     const tree_bar = document.querySelector(".tree-bar");
-    tree_bar.style.backgroundImage = url(Data.iconsData[4].svgURL);
+    tree_bar.style.backgroundImage = url(iconsData[4].svgURL);
 
     const home_hero = document.querySelector(".main-hero");
     const intro_hero = document.querySelector(".intro-hero");
@@ -151,11 +68,11 @@ app.get("/", (req, res, next) => {
     const about_hero = document.querySelector(".about-hero");
     const contact_hero = document.querySelector(".contact-hero");
 
-    home_hero.style.backgroundImage = url(Data.sectionsData[0].imgURL);
-    intro_hero.style.backgroundImage = url(Data.sectionsData[1].imgURL);
-    projects_hero.style.backgroundImage = url(Data.sectionsData[2].imgURL);
-    about_hero.style.backgroundImage = url(Data.sectionsData[3].imgURL);
-    contact_hero.style.backgroundImage = url(Data.sectionsData[4].imgURL);
+    home_hero.style.backgroundImage = url(sectionsData[0].imgURL);
+    intro_hero.style.backgroundImage = url(sectionsData[1].imgURL);
+    projects_hero.style.backgroundImage = url(sectionsData[2].imgURL);
+    about_hero.style.backgroundImage = url(sectionsData[3].imgURL);
+    contact_hero.style.backgroundImage = url(sectionsData[4].imgURL);
 
 
     // create new elements to be added
@@ -172,11 +89,11 @@ app.get("/", (req, res, next) => {
     var project_photos_container = document.createElement("div").classList(".project-photos-container")
     var project_main_image = document.createElement("img").classList(".image");
     var project_photos = {
-        one = document.createElement("img").classList(".image"),
-        two = document.createElement("img").classList(".image"),
-        three = document.createElement("img").classList(".image"),
-        four = document.createElement("img").classList(".image"),
-        five = document.createElement("img").classList(".image")
+        one: document.createElement("img").classList(".image"),
+        two: document.createElement("img").classList(".image"),
+        three: document.createElement("img").classList(".image"),
+        four: document.createElement("img").classList(".image"),
+        five: document.createElement("img").classList(".image")
     }
     project_main_image.classList.add(".main-image");
     const cta_top = document.createElement("div");
@@ -189,9 +106,9 @@ app.get("/", (req, res, next) => {
     // functions
 
     function refreshQuote() {
-        const rdmQuote = Math.round(Math.random() * Data.quotesData.length());
-        quote_content.textContent = Data.quotesData.quote[rdmQuote];
-        quote_attribution.textContent = Data.quotesData.quote[rdmQuote];
+        const rdmQuote = Math.round(Math.random() * quotesData.length());
+        quote_content.textContent = quotesData.quote[rdmQuote];
+        quote_attribution.textContent = quotesData.quote[rdmQuote];
         quote_container.innerHTML = "";
         quote_container.appendChild(quote_content);
         quote_container.appendChild(quote_attribution);
@@ -215,7 +132,7 @@ app.get("/", (req, res, next) => {
 
     function refreshProjects() {
         // collect viewed project
-        const viewedProject = Data.projectsData[this.dataset.projectid];
+        const viewedProject = projectsData[this.dataset.projectid];
 
         // start adding data
         project_title.textContent = viewedProject.title;
@@ -233,7 +150,7 @@ app.get("/", (req, res, next) => {
         project_main.appendChild(project_main_image);
 
         project_display.appendChild(slideshow);
-        left_arrow.style.backgroundImage = url(Data.iconsData[8].svgURL);
+        left_arrow.style.backgroundImage = url(iconsData[8].svgURL);
         slideshow.appendChild(left_arrow);
         slideshow.appendChild(project_photos_viewer);
         project_photos_viewer.appendChild(project_photos_container);
@@ -256,7 +173,7 @@ app.get("/", (req, res, next) => {
             project_photos.five.alt = viewedProject.photo5ALT;
             project_photos_container.appendChild(project_photos.five);
         }
-        right_arrow.style.backgroundImage = url(Data.iconsData[9].svgURL);
+        right_arrow.style.backgroundImage = url(iconsData[9].svgURL);
         slideshow.appendChild(right_arrow);
     }
 
@@ -311,16 +228,16 @@ app.get("/", (req, res, next) => {
     }    
 
     // generate call to action content
-    const rdmCTA = Math.round(Math.random() * Data.call_to_actionData.length());
+    const rdmCTA = Math.round(Math.random() * call_to_actionData.length());
 
     // set call to action data on new elements
 
-    cta_top.textContent = Data.call_to_actionData.appriciation + "</br>" + Data.call_to_actionData.congrats + "<br> Have a " + Data.call_to_actionData.color_name + " star!";
-    star.src = Data.iconsData[2].svgURL;
-    star.alt = Data.call_to_actionData.color_name[rdmCTA] + Data.iconsData[2].alt;
-    star.fill(Data.call_to_actionData[rdmCTA].color_hex);
+    cta_top.textContent = call_to_actionData.appriciation + "</br>" + call_to_actionData.congrats + "<br> Have a " + call_to_actionData.color_name + " star!";
+    star.src = iconsData[2].svgURL;
+    star.alt = call_to_actionData.color_name[rdmCTA] + iconsData[2].alt;
+    star.fill(call_to_actionData[rdmCTA].color_hex);
     star.classList.add(".saturate");
-    cta_bot.textContent = Data.call_to_actionData[rdmCTA].call_to_action;
+    cta_bot.textContent = call_to_actionData[rdmCTA].call_to_action;
 
     // publish random content
 
@@ -356,9 +273,5 @@ app.get("/", (req, res, next) => {
     }
 
     exit_button.addEventListener("click", removeLightBox);
-
-})
-
-app.listen(port, () => {
-    console.log(`Server running at ${port}`);
-});
+  
+})();

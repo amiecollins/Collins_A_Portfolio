@@ -1,3 +1,5 @@
+@import "_fonts.scss";
+
 .light-box {
     background-color: #FFFF;
     font-family: $header-font;
@@ -10,6 +12,7 @@
     margin: 10%;
     overflow: scroll;
     padding: 15%;
+    text-align: center;
 }
 
 .light-box-photo {

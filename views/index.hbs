@@ -1,15 +1,15 @@
 <header class="top-bar">
     <h1 class="hidden">Welcome to my Portfolio -Signed, Amie Collins</h1>
-    <div class="trees"></div>
+    <div class="trees" style="background-image: url(images/SVG/{{ icons.4.svgURL }});"></div>
     <div class="bar">
-        <img class="logo" src="{{ icons.0.svgURL }}" alt="{{ icons.0.alt }}">
-        <img class="burger-icon" src="{{ icons.1.svgURL }}" alt="{{ icons.1.alt }}">
+        <img class="logo" src="images/SVG/{{ icons.0.svgURL }}" alt="{{ icons.0.alt }}">
+        <img class="burger-icon" src="images/SVG/{{ icons.1.svgURL }}" alt="{{ icons.1.alt }}">
         <nav class="header-nav">
             <h2 class="hidden">Header Navigation (Desktop)</h2>
             <ul>
-                <li><span data-link="home" class="link">Home</span><img src="{{ icons.2.svgURL }}" alt="{{ icons.2.alt }}"></li>
-                <li><span data-link="projects" class="link">Projects</span><img src="{{ icons.2.svgURL }}" alt="{{ icons.2.alt }}"></li>
-                <li><span data-link="about" class="link">About Me</span><img src="{{ icons.2.svgURL }}" alt="{{ icons.2.alt }}"></li>
+                <li><span data-link="home" class="link">Home</span><img src="/images/SVG/{{ icons.2.svgURL }}" alt="{{ icons.2.alt }}"></li>
+                <li><span data-link="projects" class="link">Projects</span><img src="/images/SVG/{{ icons.2.svgURL }}" alt="{{ icons.2.alt }}"></li>
+                <li><span data-link="about" class="link">About Me</span><img src="/images/SVG/{{ icons.2.svgURL }}" alt="{{ icons.2.alt }}"></li>
                 <li><span data-link="contact" class="link">Contact</span></li>
             </ul>
         </nav>
@@ -25,14 +25,14 @@
     </div>
 </header>
 
-<div class="light-box hidden"><img src="{{ icons.3.svgURL }}" alt="{{ icons.3.alt }}" class="exit-button"></div>
+<div class="light-box hidden"><img src="/images/{{ images/SVG/icons.3.svgURL }}" alt="{{ icons.3.alt }}" class="exit-button"></div>
 <div class="main-wrapper">
     {{!-- Home --}}
     <section class="home">
         <h2 class="hidden">Home</h2>
-        <div class="main-hero saturate" style="background-image: url({{ section.0.imgURL }});">
+        <div class="main-hero saturate" style="background-image: url(/images/{{ section.0.imgURL }});">
             <div class="welcome-title-bg light-bg">
-                {{ section.0.title }} <img class="hero-logo" src="{{ icons.0.svgURL }}" alt="{{ icons.0.alt }}">
+                {{ section.0.title }} <img class="hero-logo" src="/images/SVG/{{ icons.0.svgURL }}" alt="{{ icons.0.alt }}">
                 <span class="main-text">{{ section.0.content }}</span>
             </div>
         </div>
@@ -42,7 +42,7 @@
             <div class="photo-trio">
                 {{#each qualities}}
                 <div class="photo-container">
-                    <div class="quality-photo saturate blur" style="background-image: url({{ this.imgURL }});"><div class"quality-desc light-bg"><span>{{ this.description }}</span></div></div>
+                    <div class="quality-photo saturate blur" style="background-image: url(/images/{{ this.imgURL }});"><div class"quality-desc light-bg"><span>{{ this.description }}</span></div></div>
                     <div class="photo-title">{{ this.title }}</div>
                 </div>
                 {{/each}}
@@ -51,12 +51,12 @@
 
         <section class="intro">
             <h3 class="hidden">Introduction to Me</h2>
-            <div class="intro-hero saturate" style="background-image: url({{ section.1.imgURL }});">
+            <div class="intro-hero saturate" style="background-image: url(/images/{{ section.1.imgURL }});>
 
-                <img class="me-photo saturate" src="{{ photos.0.imgURL }}" alt="{{ photos.0.alt }}">
+                <img class="me-photo saturate" src="/images/{{ photos.0.imgURL }}" alt="{{ photos.0.alt }}">
                 <div class="intro-bg light-bg">
                     <div class="intro-title">{{ section.1.title }}</div>
-                    <div class="intro-text">{{ section.1.content }}</div>
+                    <div class="intro-text">{{ section.1.content }}</div><span class="link learn more" data-link="about">(learn more...)</span>
                 </div>
             </div>
         </section>
@@ -71,7 +71,7 @@
 {{!-- Projects --}}
     <section class="projects">
         <h2 class="hidden">Projects I've worked on</h2>
-        <div class="projects-hero saturate" style="background-image: url({{ section.2.imgURL }});">
+        <div class="projects-hero saturate" style="background-image: url(/images/{{ section.2.imgURL }});">
             <div class="projects-title-bg light-bg">{{ section.2.title }}</div>
             <div class="projects-container">
                 {{#each projects}}
@@ -86,7 +86,7 @@
 {{!-- About Me --}}
     <section class="about">
         <h2 class="hidden">More About Me</h2>
-        <div class="about-hero saturate" style="background-image: url({{ section.3.imgURL }});">
+        <div class="about-hero saturate" style="background-image: url(/images/{{ section.3.imgURL }});">
             <div class="about-text-bg light-bg">
                 {{ section.3.title }}
                 {{ section.3.content }}
@@ -96,7 +96,7 @@
                             <h2 class="hidden">Links to Important Documents</h2>
                             <ul>
                                 {{#each documents}}
-                                    <li><a href="{{ this.link }}"><img src="{{ this.svgURL }}" alt="{{ this.alt }}" class="link-icon"></a></li>
+                                    <li><a href="{{ this.link }}"><img src="/images/SVG/{{ this.svgURL }}" alt="{{ this.alt }}" class="link-icon"></a></li>
                                 {{/each}}
                             </ul>
                         </nav>
@@ -107,7 +107,7 @@
                             <h2 class="hidden">Social Media Links</h2>
                             <ul>
                                 {{#each social_media}}
-                                    <li><a href="{{ this.link }}"><img src="{{ this.svgURL }}" alt="{{ this.alt }}" class="link-icon"></a></li>
+                                    <li><a href="{{ this.link }}"><img src="/images/SVG/{{ this.svgURL }}" alt="{{ this.alt }}" class="link-icon"></a></li>
                                 {{/each}}
                             </ul>
                         </nav>
@@ -133,7 +133,7 @@
 {{!-- Contact --}}
     <section class="contact">
         <h2 class="hidden">Contact Form</h2>
-        <div class="contact-hero saturate" style="background-image: url({{ section.4.imgURL }});">
+        <div class="contact-hero saturate" style="background-image: url(/images/{{ section.4.imgURL }});">
             <form action="includes/form.php" class="contact-form">
                 <div class="contact-title">
                     {{ section.4.title }}
@@ -169,7 +169,7 @@
     {{!-- Footer --}}
     <footer class="main-footer">
         <h2 class="hidden">Footer Navigation and Social Media Links</h2>
-        <div class="footer-nav light-bg" style="background-image: url({{ section.5.imgURL }});">
+        <div class="footer-nav light-bg" style="background-image: url(/images/{{ section.5.imgURL }});">
             <nav>
                 <h3 class="hidden">Footer Page Navigation</h3>
                 <ul>
@@ -186,7 +186,7 @@
                 <h2 class="hidden">Social Media Links</h2>
                 <ul>
                     {{#each social_media}}
-                        <li><a href="{{ this.link }}"><img src="{{ this.svgURL }}" alt="{{ this.alt }}" class="link-icon"></a></li>
+                        <li><a href="{{ this.link }}"><img src="/images/SVG/{{ this.svgURL }}" alt="{{ this.alt }}" class="link-icon"></a></li>
                     {{/each}}
                 </ul>
             </nav>
