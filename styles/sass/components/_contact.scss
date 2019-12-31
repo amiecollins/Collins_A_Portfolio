@@ -4,6 +4,7 @@
     width: 100%;
 }
 
+
 .contact-hero {
     background-position: center;
     height: 580px;
@@ -11,10 +12,19 @@
     background-size: cover;
 }
 
+.contact-title {
+    font-family: $cursive-font;
+    size: 100px;
+    color: #FFF;
+    padding: 30px;
+    margin: 0 auto;
+}
+
 .contact-form {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin: auto 0;
 }
 
 .contact-row {
@@ -32,8 +42,8 @@ label {
 }
 
 input {
-    width: 400px;
-    height: 30px;
+    flex: 2 1 400px;
+    min-height: 30px;
     padding: 2px;
     font-family: $main-font;
     size: 28px;
@@ -46,6 +56,11 @@ textarea {
     font-family: $main-font;
     size: 20px;
     line-height: 90%;
+}
+
+.clear-button .send-button {
+    font-family: $cursive-font;
+    font-size: 50px;
 }
 
 .thank-you-message {

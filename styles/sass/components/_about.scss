@@ -7,7 +7,8 @@
 .about-hero {
     background-position: center;
     background-size: cover;
-    height: 570px;
+    min-height: 300px;
+    max-height: 570px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -15,8 +16,21 @@
 }
 
 .about-text-bg {
-    width: 100%;
+    width: 80%;
+    padding: 10%;
     margin: auto 0;
+    font-family: $header-font;
+    size: 50px;
+    text-align: center;
+}
+
+.just-like-magic {
+    size: 100px;
+    font-family: $cursive-font;
+}
+
+.disclaimer {
+    size: 12px;
 }
 
 .about-navigation {
@@ -25,11 +39,17 @@
 }
 
 .document-links, .social-media-links {
-    width: 100%;
+    width: 80%;
+    padding: 10%;
+    margin: auto 0;
     height: 80px;
+    margin-top: 100px;
+}
+
+.documents, .social-media-about {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 
 .link-icon {
@@ -58,7 +78,7 @@
 .horizontal-feeds {
     display: flex;
     flex-direction: column;
-
+    margin-bottom: 80px;
 }
 
 .twitter-feed, .facebook-feed {
@@ -68,10 +88,17 @@
 
 .fb-page {
     width: 100%;
+    margin: 0 auto;
 }
 
-.twitter-timeline {
+.facebook-feed {
+    margin-bottom: 50px;;
+}
+
+.twitter-feed {
     width: 100%;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .spotify-playlist {
@@ -101,13 +128,13 @@
     
     .twitter-feed, .facebook-feed {
         height: 450px;
-        width: 100%;
-        padding: 10px;
+        margin: 20px;
     }
 
     .spotify-playlist {
         width: 100%;
         height: 250px;
+        margin: 20px;
     }
     
 }
@@ -115,7 +142,4 @@
 // desktop
 @media screen and (min-width: 900px) {
 
-    .twitter-feed, .facebook-feed {
-        height: 300px;
-    }
 }

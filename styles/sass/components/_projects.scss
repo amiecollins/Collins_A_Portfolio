@@ -7,22 +7,24 @@
 .projects-hero {
     background-position: center;
     background-size: cover;
-    height: 560px;
-    width: 100%;
-    padding: 40px 10px;
+    min-height: 560px;
+    width: 90%;
+    padding: 40px 5%;
 }
 
 .projects-title-bg {
-    width: 100%;
+    width: 80%;
     font-family: $header-font;
     size: 36px;
     line-height: 43px;
     height: 50px;
-    margin-bottom: 40px;
+    margin: 0px auto 40px auto;
+    text-align: center;
 }
 
 .projects-container {
-    width: 100%;
+    width: 80%;
+    margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -30,30 +32,38 @@
 }
 
 .project-icon {
-    size: 25px;
+    size: 45px;
+    text-align: center;
+    vertical-align: center;
     line-height: 30px;
-    min-height: 150px;
-    flex: 1 1 150px;
+    min-height: 100px;
+    flex: 1 1 100px;
+    max-height: 300px;
+    max-width: 300px;
+    margin: 20px;
     font-family: $main-font;
+    transition: ease-in 0.5s;
     background-color: rgba(102,102,102, 1);
+}
+
+.project-icon-title {
+    margin: auto 0;
 }
 
 .project-icon:hover {
     flex: 2 2 300px;
     min-height: 300px;
-    transition: ease-in 0.5s;
     font-size: 40px;
     line-height: 48px;
-    letter-spacing: 150%;
-    box-shadow: 5px 10px #000;
+    letter-spacing: 5px;
+    font-weight: 400;
+    padding: 15px;
+    box-shadow: 2px 10px #000;
     background-color: rgba(52,52,52, 0.8);
 }
 
 .projects-display {
     padding: 10px 20px;
-    transition: ease-in-out 1s;
-    display: flex;
-    flex-wrap: wrap;
 }
 
 .project-title {
@@ -62,6 +72,7 @@
     line-height: 44px;
     margin-bottom: 10px;
     width: 100%;
+    text-align: center;
 }
 
 .project-desc {
@@ -69,41 +80,58 @@
     line-height: 35px;
     font-family: $main-font;
     width: 100%;
+    margin-bottom: 15px;
 }
 
 .project-link-container {
-    font-family: $cursive-font;
-    size: 45px;
-    line-height: 54px;
     background-color: #000;
-    border: 5px solid black;
-    border: 2px solid white;
-    width: 100%;
+    padding: 3px;
+    border: 2px solid black;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+.project-link {
+    font-family: $cursive-font;
+    font-size: 80px;
+    line-height: 54px;
+    color: #FFF;
 }
 
 .project-main-photo {
     width: 100%;
-    padding: 15px;
+    padding: 15px 0px;
     height: auto;
 }
 
-.project_main {
+.project-main {
     width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .slideshow {
-    height: 1000px;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.project_photos_container {
+.project-photos-container {
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    height: 500px;
+    margin: 0 auto;
 }
 
-.project_photos_viewer {
+.project-photos-viewer {
     padding: 10px;
+    height: 1000px;
+    margin: 0 auto;
 }
 
 .image {
@@ -117,7 +145,7 @@
     justify-content: flex-start;
 }
 
-.right {
+.center {
     align-items: center;
     justify-content: center;
 }
@@ -130,29 +158,23 @@
 .left-arrow {
     width: 70px;
     height: 100px;
-    margin-left: 0px;
-    margin-right: 10px;
-    rotate: 90;
+    transform: rotate(90deg);
+    margin: 0 auto;
 }
 
 .left-arrow:hover {
-    margin-left: 10px;
-    margin-right: 0px;
-    transition: ease-in 1.5s;
+    opacity: 0.8;
 }
 
 .right-arrow {
     width: 70px;
     height: 100px;
-    margin-left: 10px;
-    margin-right: 0px;
-    rotate: 90;
+    transform: rotate(90deg);
+    margin: 0 auto;
 }
 
 .right-arrow:hover {
-    margin-left: 0px;
-    margin-right: 10px;
-    transition: ease-in 1.5s;
+    opacity: 0.8;
 }
 
 
@@ -160,22 +182,26 @@
 @media screen and (min-width: 600px) {
         
     .slideshow {
-        height: 250px;
+        height: 200px;
         width: 100%;
+        flex-direction: row;
     }
 
     .project_photos_container {
         flex-direction: row;
+        height: 200px;
     }
 
     .right-arrow {
-        rotate: 0;
+        transform: rotate(0deg);
+        margin: auto 0;
     }
 
     .left-arrow {
-       rotate: 0; 
+        transform: rotate(0deg);
+        margin: auto 0; 
     }
-    
+        
 }
 
 // desktop

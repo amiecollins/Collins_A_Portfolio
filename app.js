@@ -19,6 +19,7 @@ const app = express();
 
 
 var quotesData;
+var selected_quote_data;
 var projectsData;
 var call_to_actionData;
 var iconsData;
@@ -77,6 +78,7 @@ app.get("/index", (req, res, next) => {
         sql.query(query, (err, quotes) => {
             if (err) { console.log(err.message); return next(); }
             quotesData = quotes;
+            selected_quote_data = quotesData[Math.round(Math.random() * quotesData.length)];
         })
 
         query = "SELECT * FROM tbl_icons";
@@ -90,36 +92,36 @@ app.get("/index", (req, res, next) => {
             if (err) { console.log(err.message); return next(); }
             photosData = photos;
         })
+        
     })
 
-    
-    var Data = {
-        //quotes: quotesData,
-        projects: projectsData,
-        //call_to_action: call_to_actionData
-    };
+    // var Data = {
+    //     //quotes: quotesData,
+    //     projects: projectsData,
+    //     //call_to_action: call_to_actionData
+    // };
     
     //JSON.stringify(Data);
 
-    console.log(Data);
+    // console.log(Data);
     
-    async function sendData() {
-        console.log("sendData initiated" + JSON.stringify(Data));
-        console.log(JSON.parse(JSON.stringify(Data)));
-        console.log("fetch started");
-        var response = await fetch("http://localhost:3000/includes/dynamic-content.json", {  
-            method: 'POST', 
-            headers: {'Content-Type': 'application/json'}, json: JSON.stringify(Data) 
-        }).then(function(data) { console.log(data); return data; }).then(async function(datacontent) { if (datacontent == null) { console.log("data fail"); } else { console.log(datacontent.json()); } }).catch(err => console.error(err));
-        console.log("fetch complete");
-        return response;
-    }
+    // async function sendData() {
+    //     console.log("sendData initiated" + JSON.stringify(Data));
+    //     console.log(JSON.parse(JSON.stringify(Data)));
+    //     console.log("fetch started");
+    //     var response = await fetch("http://localhost:3000/includes/dynamic-content.json", {  
+    //         method: 'POST', 
+    //         headers: {'Content-Type': 'application/json'}, json: JSON.stringify(Data) 
+    //     }).then(function(data) { console.log(data); return data; }).then(async function(datacontent) { if (datacontent == null) { console.log("data fail"); } else { console.log(datacontent.json()); } }).catch(err => console.error(err));
+    //     console.log("fetch complete");
+    //     return response;
+    // }
     
-    var Request = sendData();
+    // var Request = sendData();
     
-    console.log("Request complete" + Request);
+    // console.log("Request complete" + Request);
 
-    res.render("index", { icons: iconsData, photos: photosData, projects: projectsData, section: sectionsData, qualities: qualitiesData, social_media: social_mediaData });
+    res.render("index", { icons: iconsData, photos: photosData, projects: projectsData, section: sectionsData, qualities: qualitiesData, social_media: social_mediaData, selected_quote: selected_quote_data });
 
 
 })

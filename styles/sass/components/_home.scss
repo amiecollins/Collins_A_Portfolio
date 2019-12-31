@@ -5,33 +5,47 @@
     height: 410px;
     background-position: center;
     background-size: cover;
-    padding: 40px;
     display: flex;
 }
 
 .welcome-title-bg {
     margin-bottom: 40px;
-    margin: 0 auto;
+    margin: 40px;
     overflow: auto;
     width: 100%;
+    height: auto;
     flex-direction: column;
     align-items: flex-end;
+    padding: 30px;
+    overflow: hidden;
+    font-family: $header-font;
+    size: 60px;
+    text-align: center;
+}
+
+.home-text {
+    font-family: $main-font;
+    size: 50px;
+}
+
+.hero-logo {
+    height: 27px;
+    width: auto;
+    margin-bottom: -3px;
+    margin-left: 10px;
 }
 
 .qualities {
     padding: 10px;
     width: 100%;
+    overflow: hidden;
 }
 
 .qualities-title {
     font-family: $header-font;
     size: 36px;
     line-height: 44px;
-}
-
-.photo-container {
-    display: flex;
-    flex-direction: column;
+    text-align: center;
 }
 
 .photo-trio {
@@ -39,6 +53,16 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.photo-container {
+    display: flex;
+    flex-direction: column;
+    width: 370px;
+    overflow: hidden;
+    align-items: center;
 }
 
 .quality-photo {
@@ -46,22 +70,33 @@
     background-position: center;
     background-size: cover;
     width: 350px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    filter: grayscale(100%);
+    filter: blur(0.5rem);
+    transition: ease-in 2s;
+    position: absolute;
+}
+
+.quality-photo:hover {
+    filter: grayscale(0%);
+    filter: blur(0);
+    transition: ease-in 2s;
+}
+
+.photo-top {
+    width: 100%;
     border: 10px black solid;
+    height: 350px;
+    width: 350px;
 }
 
 .quality-desc {
-    width: 100%;
+    width: 350px;
     font-family: $header-font;
     size: 35px;
     line-height: 45px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    margin: auto 0 px;
     text-align: center;
+    vertical-align: middle;
 }
 
 .photo-title {
@@ -70,8 +105,9 @@
     text-align: center;
     vertical-align: middle;
     line-height: 100px;
-    size: 38px;
+    size: 100px;
     height: 100px;
+    width: 350px;
 }
 
 
@@ -95,6 +131,11 @@
         height: auto;
     }
 
+    .photo-top {
+        min-width: 200px;
+        height: auto;
+    }
+
     .quality-desc {
         margin: 15px;
         height: 100%;
@@ -104,6 +145,12 @@
         height: 80px;
         line-height: 80px;
         size: 38px; 
+        min-width: 200px;
+    }
+
+    .photo-container {
+        min-width: 200px;
+        overflow: hidden;
     }
 
 }
@@ -112,6 +159,10 @@
 @media screen and (min-width: 900px) {
     .welcome-title-bg {
         height: 150px;
+    }
+
+    .photo-trio {
+        margin: 15px;
     }
 
 }

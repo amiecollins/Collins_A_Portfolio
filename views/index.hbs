@@ -1,8 +1,7 @@
 <header class="top-bar">
     <h1 class="hidden">Welcome to my Portfolio -Signed, Amie Collins</h1>
-    <div class="trees"></div>
-    <div class="tree-bar" style="background-image: url(images/SVG/{{ icons.4.svgURL }});"></div>
-        <img class="logo" src="images/SVG/{{ icons.0.svgURL }}" alt="{{ icons.0.alt }}">
+    <div class="tree-bar" style="background-image: url(images/SVG/{{ icons.4.svgURL }});">
+        <img class="logo-mid" src="images/SVG/{{ icons.0.svgURL }}" alt="{{ icons.0.alt }}">
         <img class="burger-icon" src="images/SVG/{{ icons.1.svgURL }}" alt="{{ icons.1.alt }}">
         <nav class="header-nav">
             <h2 class="hidden">Header Navigation (Desktop)</h2>
@@ -13,27 +12,32 @@
                 <li><span data-link="contact" class="link">Contact</span></li>
             </ul>
         </nav>
-        <nav class="burger-menu hidden">
-            <h2 class="hidden">Burger Menu Navigation (Mobile)</h2>
-            <ul>
-                <li><span data-link="home" class="link">Home</span></li>
-                <li><span data-link="projects" class="link">Projects</span></li>
-                <li><span data-link="about" class="link">About Me</span></li>
-                <li><span data-link="contact" class="link">Contact</span></li>
-            </ul>
-        </nav>
     </div>
+    <nav class="burger-menu hidden">
+        <h2 class="hidden">Burger Menu Navigation (Mobile)</h2>
+        <ul>
+            <li><span data-link="home" class="link">Home</span></li>
+            <li><span data-link="projects" class="link">Projects</span></li>
+            <li><span data-link="about" class="link">About Me</span></li>
+            <li><span data-link="contact" class="link">Contact</span></li>
+        </ul>
+    </nav>
 </header>
 
-<div class="light-box hidden"><img src="/images/{{ images/SVG/icons.3.svgURL }}" alt="{{ icons.3.alt }}" class="exit-button"></div>
+<div class="light-box hidden"><img src="/images/{{ images/SVG/icons.3.svgURL }}" alt="{{ icons.3.alt }}" class="exit-button">
+    <div class="light-box-title"></div><br>
+    <img class="light-box-image" src="" alt="Error"></div><br>
+    <div class="light-box-description"></div>
+</div>
 <div class="main-wrapper">
     {{!-- Home --}}
     <section class="home">
         <h2 class="hidden">Home</h2>
+        <div class="white-bar"><img src="images/SVG/{{ icons.1.svgURL }}" alt="{{ icons.1.alt }}" class="tagline"></div>
         <div class="main-hero saturate" style="background-image: url(/images/{{ section.0.imgURL }});">
             <div class="welcome-title-bg light-bg">
-                {{ section.0.title }} <img class="hero-logo" src="/images/SVG/{{ icons.0.svgURL }}" alt="{{ icons.0.alt }}">
-                <span class="main-text">{{ section.0.content }}</span>
+                {{ section.0.title }}<img class="hero-logo" src="/images/SVG/{{ icons.0.svgURL }}" alt="{{ icons.0.alt }}"><br><br>
+                <span class="home-text">{{ section.0.content }}</span>
             </div>
         </div>
 
@@ -42,8 +46,8 @@
             <div class="photo-trio">
                 {{#each qualities}}
                 <div class="photo-container">
-                    <div class="quality-photo saturate blur" style="background-image: url(/images/{{ this.imgURL }});"><div class="quality-desc light-bg"><span>{{ this.description }}</span></div></div>
-                    <div class="photo-title">{{ this.title }}</div>
+                    <div class="photo-top"><div class="quality-desc light-bg"><span>{{ this.description }}</span></div></div>
+                    <div class="photo-title">{{ this.title }}<div class="quality-photo" style="background-image: url(/images/{{ this.imgURL }});"></div></div>
                 </div>
                 {{/each}}
             </div>
@@ -56,17 +60,20 @@
                 <img class="me-photo saturate" src="/images/{{ photos.0.imgURL }}" alt="{{ photos.0.alt }}">
                 <div class="intro-bg light-bg">
                     <div class="intro-title">{{ section.1.title }}</div>
-                    <div class="intro-text">{{ section.1.content }}</div><span class="link learn more" data-link="about">(learn more...)</span>
+                    <div class="intro-text">{{ section.1.content }}<span class="link learn-more" data-link="about">(learn more...)</span></div>
                 </div>
             </div>
         </section>
 
         <section class="quotes">
             <h3 class="hidden">inspirational quote for you</h3>
-            <div class="quote"></div>
+            <div class="quote">
+                <div class="quote-content">{{ selected_quote.quote }}</div>
+                <div class="quote-attribution">{{ selected_quote.person }}</div>
+                </div>
         </section>
 
-    </section>
+    </section>  
 
 {{!-- Projects --}}
     <section class="projects">
@@ -75,12 +82,29 @@
             <div class="projects-title-bg light-bg">{{ section.2.title }}</div>
             <div class="projects-container">
                 {{#each projects}}
-                    <div class="project-icon" data-projectid="{{ this.id }}">{{ this.title }}</div>
+                    <div class="project-icon" data-stuff="{{ this }}"><div class="project-icon-title">{{ this.title }}</div></div>
                 {{/each}}
             </div>
         </div>
         <div class="projects-display">
-            {{!-- generate with js --}}
+            <div class="project-title">{{ projects.0.title }}</div>
+            <div class="project-main">
+                <div class="project-desc">{{ projects.0.description }}<div class="project-link-container"><a href="{{ projects.0.URL }}" class="project-link">link to view</a></div>
+                <img class="project-main-photo" src="{{ projects.0.main_photoURL }}" alt="{{ projects.0.main_photoALT }}">
+            </div>
+            <div class="slideshow">
+                <img class="left-arrow" src="images/SVG/{{ icons.8.svgURL }}" alt="{{ icons.8.alt }}">
+                <div class="project_photos_container">
+                    <div class="project_photos_viewer center">
+                        <img class="image" src="{{ projects.0.photo1URL }}" alt="{{ projects.0.photo1ALT }}">
+                        <img class="image" src="{{ projects.0.photo2URL }}" alt="{{ projects.0.photo2ALT }}">
+                        <img class="image" src="{{ projects.0.photo3URL }}" alt="{{ projects.0.photo3ALT }}">
+                        <img class="image" src="{{ projects.0.photo4URL }}" alt="{{ projects.0.photo4ALT }}">
+                        <img class="image" src="{{ projects.0.photo5URL }}" alt="{{ projects.0.photo5ALT }}">
+                    </div>
+                </div>
+                <img class="right-arrow" src="images/SVG/{{ icons.9.svgURL }}" alt="{{ icons.9.alt }}">
+            </div>
         </div>
     </section>
 {{!-- About Me --}}
@@ -88,30 +112,31 @@
         <h2 class="hidden">More About Me</h2>
         <div class="about-hero saturate" style="background-image: url(/images/{{ section.3.imgURL }});">
             <div class="about-text-bg light-bg">
-                {{ section.3.title }}
-                {{ section.3.content }}
-                <div class="about-navigation">
-                    <div class="document-links light-bg">
-                        <nav class="documents">
-                            <h2 class="hidden">Links to Important Documents</h2>
-                            <ul>
-                                {{#each documents}}
-                                    <li><a href="{{ this.link }}"><img src="/images/SVG/{{ this.svgURL }}" alt="{{ this.alt }}" class="link-icon"></a></li>
-                                {{/each}}
-                            </ul>
-                        </nav>
-                    </div>
+                {{ section.3.title }}<br><br><span class="just-like-magic">
+                {{ section.3.content }}</span><br><br><br>
+                <div class="disclaimer">DISCLAIMER: NOt Offering Services in The Magical Arts</div>
+            </div>
+            <div class="about-navigation">
+                <div class="document-links light-bg">
+                    <nav class="documents">
+                        <h2 class="hidden">Links to Important Documents</h2>
+                        <ul>
+                            {{#each documents}}
+                                <li><a href="{{ this.link }}"><img src="/images/SVG/{{ this.svgURL }}" alt="{{ this.alt }}" class="link-icon"></a></li>
+                            {{/each}}
+                        </ul>
+                    </nav>
+                </div>
 
-                    <div class="social-media-links light-bg">
-                        <nav class="social-media">
-                            <h2 class="hidden">Social Media Links</h2>
-                            <ul>
-                                {{#each social_media}}
-                                    <li><a href="{{ this.link }}"><img src="/images/SVG/{{ this.svgURL }}" alt="{{ this.alt }}" class="link-icon"></a></li>
-                                {{/each}}
-                            </ul>
-                        </nav>
-                    </div>
+                <div class="social-media-links light-bg">
+                    <nav class="social-media-about">
+                        <h2 class="hidden">Social Media Links</h2>
+                        <ul>
+                            {{#each social_media}}
+                                <li><a href="{{ this.link }}"><img src="/images/SVG/{{ this.svgURL }}" alt="{{ this.alt }}" class="link-icon"></a></li>
+                            {{/each}}
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>
@@ -125,7 +150,7 @@
                     <a class="twitter-timeline" data-height="450" href="https://twitter.com/AmieCollinsLdn?ref_src=twsrc%5Etfw">Tweets by AmieCollinsLdn</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                 </div>
                 <div class="facebook-feed">
-                    <div class="fb-page" data-href="https://www.facebook.com/Amie-Collins-Design-Development-108582450656454" data-tabs="timeline" data-width="" data-height="450" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/Amie-Collins-Design-Development-108582450656454" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Amie-Collins-Design-Development-108582450656454">Amie Collins Design &amp; Development</a></blockquote></div>
+                    <div class="fb-page" data-href="https://www.facebook.com/Amie-Collins-Design-Development-108582450656454" data-tabs="timeline" data-width="600" data-height="450" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/Amie-Collins-Design-Development-108582450656454" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Amie-Collins-Design-Development-108582450656454">Amie Collins Design &amp; Development</a></blockquote></div>
                 </div>
             </div>
         </div>
@@ -167,12 +192,12 @@
     </section>
 
     {{!-- Footer --}}
-    <footer class="main-footer">
+    <footer class="main-footer" style="background-image: url(/images/{{ section.5.imgURL }});">
         <h2 class="hidden">Footer Navigation and Social Media Links</h2>
-        <div class="footer-nav light-bg" style="background-image: url(/images/{{ section.5.imgURL }});">
+        <div class="footer-nav light-bg">
             <nav>
                 <h3 class="hidden">Footer Page Navigation</h3>
-                <ul>
+                <ul class="footer-links">
                     <li><span data-link="home" class="link link-icon">Home</span></li>
                     <li><span data-link="projects" class="link link-icon">Projects</span></li>
                     <li><span data-link="about" class="link link-icon">About Me</span></li>
@@ -184,7 +209,7 @@
         <div class="social-media-links-footer light-bg">
             <nav class="social-media">
                 <h2 class="hidden">Social Media Links</h2>
-                <ul>
+                <ul class="footer-social-media">
                     {{#each social_media}}
                         <li><a href="{{ this.link }}"><img src="/images/SVG/{{ this.svgURL }}" alt="{{ this.alt }}" class="link-icon"></a></li>
                     {{/each}}
