@@ -1,16 +1,20 @@
 (async () => {
 
     // receive json data
-    var FullData;
-    console.log("data collection started");
-    FullData = await fetch("http://localhost:3000/includes/dynamic-content.json", { method: 'POST', headers: {'Content-Type': 'application/json'} }).then(async function (data) { return FullData = await data.json }).catch(err => console.error(err));
-    if (FullData == undefined) {
-        console.log("data not recieved");
-    } else {
-        console.log(FullData);
+    async function getData() {
+        console.log("data collection started");
+        var data = await fetch("http://localhost:3000/includes/dynamic-content.json", { method: 'POST', headers: {'Content-Type': 'application/json'} }).then(async function (data) { return FullData = await data.json }).catch(err => console.error(err));
+        if (data == undefined) {
+            console.log("data not recieved");
+        } else {
+            console.log(data);
+        }
+        return data;
     }
+    
+    var FullData = getData();
 
-    var Data = FullData.body;
+    var Data = FullData.json();
     console.log(Data);
     var quotesData = Data.quotes;
     var projectsData = Data.projects;
