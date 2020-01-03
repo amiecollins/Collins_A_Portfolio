@@ -8,6 +8,7 @@
     "autoprefixer": "^9.7.3",
     "body-parser": "^1.19.0",
     "cssnano": "^4.1.10",
+    "deploy": "^1.0.3",
     "express": "^4.17.1",
     "fetch": "^1.1.0",
     "gulp": "^4.0.2",
@@ -26,9 +27,12 @@
     "whatwg-fetch": "^3.0.0",
     "xmlhttprequest": "^1.8.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "ftp-deploy": "^2.3.6"
+  },
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "deploy": "node deploy.js"
   },
   "repository": {
     "type": "git",

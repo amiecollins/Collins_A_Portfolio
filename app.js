@@ -9,6 +9,7 @@ hbs.registerHelper("each", require("handlebars-helper-each"));
 const path = require("path");
 const ajax = require("ajax");
 const sql = require("./utils/sql");
+const deploy = require("./deploy");
 const fetch = require("node-fetch");
 const bodyParser = require("body-parser");
 const json = require("json");
