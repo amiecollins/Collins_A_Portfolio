@@ -9,7 +9,7 @@
     "body-parser": "^1.19.0",
     "cssnano": "^4.1.10",
     "deploy": "^1.0.3",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "fetch": "^1.1.0",
     "gulp": "^4.0.2",
     "gulp-postcss": "^8.0.0",
